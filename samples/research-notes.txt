@@ -1,0 +1,18 @@
+TÀI LIỆU THỰC HÀNH — DỰ ÁN THƯ VIỆN SỐ SINH VIÊN
+Đây là tình huống tự tạo để kiểm thử ứng dụng, không phải dự án thực tế.
+
+Mục tiêu: Xây dựng thư viện số để sinh viên tìm tài liệu học tập theo học phần.
+Đối tượng: Sinh viên năm nhất và năm hai.
+Thời gian dự kiến: 6 tuần.
+Ngân sách: 120 triệu đồng, gồm 70 triệu phát triển phần mềm, 30 triệu số hóa tài liệu và 20 triệu vận hành thử nghiệm.
+Nhóm thực hiện: 4 thành viên, gồm 2 lập trình viên, 1 người phụ trách nội dung và 1 người kiểm thử.
+
+Phạm vi giai đoạn đầu: Tìm tài liệu theo tên, phân loại học phần, đọc tài liệu PDF có văn bản.
+Ngoài phạm vi: OCR tài liệu scan, thanh toán và ứng dụng điện thoại riêng.
+
+Rủi ro đã ghi nhận:
+- Tài liệu đầu vào không thống nhất định dạng.
+- Nhóm có thể thiếu thời gian kiểm thử trong tuần cuối.
+
+Tiêu chí nghiệm thu: Tìm được tài liệu theo tên và học phần, đọc được tài liệu có văn bản trên điện thoại và máy tính.
+Tài liệu này không ghi tên nhà tài trợ hoặc doanh thu dự kiến.

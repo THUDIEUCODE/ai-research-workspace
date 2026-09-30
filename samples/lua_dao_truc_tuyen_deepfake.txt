@@ -1,0 +1,35 @@
+LỪA ĐẢO TRỰC TUYẾN BẰNG DEEPFAKE
+Tài liệu mẫu để kiểm thử AI Research Workspace
+
+Lưu ý: Tình huống, nhân vật, kế hoạch và số liệu dưới đây là giả định phục vụ học tập, không phải thống kê hay vụ việc có thật.
+
+1. KHÁI NIỆM
+Deepfake là nội dung hình ảnh, âm thanh hoặc video được tạo hay chỉnh sửa bằng AI để mô phỏng một người. Công nghệ này có thể được dùng cho sáng tạo, nhưng cũng có thể bị lợi dụng để giả danh người thân hoặc người có thẩm quyền. Một giọng nói quen thuộc hay khuôn mặt xuất hiện trong video không đủ để xác nhận danh tính.
+
+2. TÌNH HUỐNG GIẢ ĐỊNH
+Lúc 19 giờ ngày 15/10/2026, sinh viên Mai nhận cuộc gọi video từ tài khoản có tên và ảnh đại diện giống anh trai. Người trong cuộc gọi nói đang gặp việc khẩn cấp, yêu cầu chuyển 8.000.000 đồng trong 10 phút vào tài khoản mang tên người lạ. Cuộc gọi kéo dài 25 giây, âm thanh ngắt quãng và người gọi yêu cầu không liên hệ với gia đình.
+Mai không chuyển tiền. Mai gọi lại số điện thoại anh trai đã lưu từ trước và biết anh không hề nhờ chuyển tiền. Tình huống minh họa cách xác minh độc lập giúp ngăn thiệt hại. Các biểu hiện hình ảnh hoặc âm thanh bất thường chỉ là dấu hiệu nghi ngờ, không đủ để khẳng định có deepfake.
+
+3. DẤU HIỆU CẦN CẢNH GIÁC
+- Thúc ép hành động ngay, viện lý do khẩn cấp và yêu cầu giữ bí mật.
+- Yêu cầu chuyển tiền vào tài khoản lạ hoặc cung cấp mã OTP, mật khẩu.
+- Từ chối xác minh qua số liên hệ quen thuộc hay kênh độc lập.
+- Lời nói, nội dung yêu cầu hoặc cách xưng hô khác thường.
+Không nên kết luận cuộc gọi an toàn chỉ vì hình ảnh rõ hoặc giọng nói giống người quen.
+
+4. QUY TRÌNH DỪNG LẠI - XÁC MINH - KIỂM CHỨNG
+Bước 1: Dừng lại. Chưa chuyển tiền, chưa cung cấp thông tin đăng nhập, không bấm liên kết lạ.
+Bước 2: Xác minh. Kết thúc cuộc gọi đáng ngờ và tự gọi số đã biết từ trước; không dùng số hoặc liên kết do người gọi cung cấp.
+Bước 3: Kiểm chứng. Đối chiếu yêu cầu với người thân hoặc đơn vị liên quan qua kênh chính thức. Chỉ tiếp tục giao dịch khi đã xác minh được người yêu cầu và mục đích.
+Nếu đã chuyển tiền, cần nhanh chóng liên hệ ngân hàng qua kênh chính thức, lưu bằng chứng và trình báo cơ quan có thẩm quyền. Việc liên hệ sớm không bảo đảm lấy lại được tiền.
+
+5. ĐỀ XUẤT THỬ NGHIỆM SAFECHECK AI
+Trong kế hoạch giả định này, SafeCheck AI là công cụ hỗ trợ đánh giá nội dung đáng ngờ. Công cụ đưa ra mức cảnh báo thấp, trung bình hoặc cao, giải thích dấu hiệu và gợi ý xác minh. Đây là ý tưởng thử nghiệm, chưa phải sản phẩm đã được đánh giá độ chính xác.
+Đối tượng: 30 sinh viên tình nguyện. Thời gian: 14 ngày, từ 01/11/2026 đến 14/11/2026.
+Nội dung: 6 tình huống mô phỏng, gồm 3 tình huống giả giọng nói và 3 tình huống giả cuộc gọi video; chỉ dùng dữ liệu có sự đồng ý của người tham gia.
+Ngân sách dự kiến: 600.000 đồng in tài liệu; 900.000 đồng hỗ trợ tổ chức; 500.000 đồng dự phòng. Tổng cộng: 2.000.000 đồng.
+Chỉ tiêu: ít nhất 24/30 người thực hiện đúng đủ ba bước xác minh trong bài đánh giá cuối. Đây là mục tiêu, không phải kết quả đã đạt.
+
+6. RỦI RO VÀ GIỚI HẠN
+Công cụ có thể cảnh báo nhầm nội dung thật hoặc bỏ sót nội dung giả. Không dùng điểm đánh giá AI làm căn cứ duy nhất để chuyển tiền hay xác nhận danh tính. Cần bảo vệ dữ liệu khuôn mặt, giọng nói và thông tin riêng tư của người tham gia.
+Tài liệu chưa cung cấp độ chính xác của SafeCheck AI, tên ngân hàng trong tình huống, số điện thoại hỗ trợ hoặc thống kê thiệt hại trên toàn quốc.
