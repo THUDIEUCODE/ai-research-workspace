@@ -1,5 +1,13 @@
 # AI Research Workspace
 
+## Liên kết nộp bài
+
+- [Live URL trên Render](https://ai-research-workspace-a1yf.onrender.com)
+- [Source code trên GitHub](https://github.com/THUDIEUCODE/ai-research-workspace)
+- Video demo: chưa bổ sung.
+
+Ngày 30/09/2026, người thực hiện xác nhận đã tự đưa code lên GitHub và deploy Render gói Free. Log báo “Build successful” và “Your service is live”. Đây là xác nhận build/deploy, **chưa phải bằng chứng các chức năng trên hosting đã được kiểm thử đầy đủ**. Những kết quả kiểm thử ghi bên dưới là trên môi trường local, trừ khi nêu rõ khác.
+
 Không gian nghiên cứu dành cho sinh viên và người cần đọc nhiều tài liệu: tải PDF/TXT, đặt câu hỏi tiếp nối và xem câu trả lời tiếng Việt có cấu trúc. Giao diện giữ lịch sử trong tab, hỗ trợ sao chép, tạo lại và dừng phản hồi.
 
 **Luồng chính dùng backend và Google GenAI SDK, không trả đáp án demo.** Ngày 29/09/2026 đã thử Gemini thật với bốn dạng câu hỏi trên `samples/research-notes.txt`: ngân sách, tóm tắt, rủi ro và thông tin không có trong tài liệu; kết quả phù hợp trong lượt thử này. Kiểm thử tự động vẫn dùng provider/SSE mock riêng trong `tests`; không có chế độ mock trong ứng dụng chạy bình thường. Kết quả một lượt thử không bảo đảm mọi phản hồi AI đều đúng.
@@ -55,7 +63,9 @@ Trên hệ thống không chặn `npm.ps1`, có thể dùng `npm` thay cho `npm.
 6. **Sao chép** xuất văn bản có tiêu đề, báo thành công/thất bại. Clipboard cần localhost hoặc HTTPS và quyền trình duyệt; có thể chọn văn bản để sao chép thủ công.
 7. Muốn thay đổi bộ tài liệu sau khi chat, bấm **Hội thoại mới** và xác nhận xóa lịch sử tab. Tài liệu còn hạn được giữ để tiếp tục chỉnh. Khi phiên hết hạn, nút đổi thành **Tạo phiên mới**, yêu cầu tải lại tài liệu.
 
-Lịch sử văn bản, ID bộ tài liệu gắn với hội thoại và mã phiên ngẫu nhiên được lưu trong `sessionStorage`, không lưu API key hoặc toàn bộ tài liệu. Sau khi tải lại trang, lịch sử vẫn xem được; frontend kiểm tra lại phiên/tài liệu trên server. Nếu bộ ID tài liệu thay đổi (ví dụ từ một tab khác), cần bắt đầu hội thoại mới để không trộn ngữ cảnh. Lịch sử chỉ ghi sau khi lượt xử lý kết thúc, nên tải lại giữa stream có thể mất lượt đang nhận. Nếu storage bị chặn/đầy, giao diện thông báo và tiếp tục dùng state trong bộ nhớ.
+Lịch sử văn bản, ID bộ tài liệu gắn với hội thoại và mã phiên ngẫu nhiên được lưu trong `sessionStorage`, chỉ trong cùng tab; có thể mất khi đóng tab hoặc xóa dữ liệu trình duyệt. Không lưu API key hoặc toàn bộ tài liệu. Sau khi tải lại trang trong cùng tab, lịch sử đã lưu thường vẫn xem được; frontend kiểm tra lại phiên/tài liệu trên server. Nếu bộ ID tài liệu thay đổi (ví dụ từ một tab khác), cần bắt đầu hội thoại mới để không trộn ngữ cảnh. Lịch sử chỉ ghi sau khi lượt xử lý kết thúc, nên tải lại giữa stream có thể mất lượt đang nhận. Nếu storage bị chặn/đầy, giao diện thông báo và tiếp tục dùng state trong bộ nhớ. Tài liệu nằm trong RAM server và mất khi server khởi động lại; cần tạo phiên mới và tải lại tệp.
+
+**Lỗi còn tồn tại theo kiểm tra ngày 30/09/2026:** lịch sử vượt 80 tin nhắn có thể bị bỏ toàn bộ khi tải lại mà không cảnh báo. Đã tái hiện bằng dữ liệu kiểm tra 82 tin nhắn; chưa có xác nhận sửa lỗi. Đây là lỗi biên, không phải cam kết lưu lịch sử vĩnh viễn.
 
 ## Công nghệ và cấu trúc
 
@@ -176,7 +186,22 @@ Sau khi cấu hình key hợp lệ và khởi động lại backend:
 6. Thử tệp rỗng/sai định dạng/scan/mật khẩu; thu màn hình về 375 px.
 7. Tắt backend để kiểm tra mất kết nối. Chỉ thử sai key bằng cách tự sửa `.env` ở máy, không quay hoặc chia sẻ màn hình chứa key. Khôi phục key sau đó.
 
-## Build và triển khai (chưa tự deploy)
+## Build và triển khai
+
+### Render — đã triển khai theo xác nhận của người thực hiện
+
+- Ngày triển khai: **30/09/2026**; người thực hiện tự thao tác với hướng dẫn của ChatGPT.
+- Gói dịch vụ: **Free**.
+- Repository: [THUDIEUCODE/ai-research-workspace](https://github.com/THUDIEUCODE/ai-research-workspace).
+- Live URL: [ai-research-workspace-a1yf.onrender.com](https://ai-research-workspace-a1yf.onrender.com).
+- Build Command: `npm ci --include=dev && npm run build`.
+- Start Command: `npm run start`.
+- Đã cấu hình `GEMINI_API_KEY` và `GEMINI_MODEL` bằng **Environment Variables trên Render**; không đưa giá trị bí mật vào tài liệu/source.
+- Log Render được người thực hiện xác nhận: “Build successful” và “Your service is live”.
+
+Chưa có bằng chứng kiểm thử đầy đủ upload, Gemini, streaming, lịch sử, sao chép và tạo lại trên hosting. Log live và tests mock không thay thế kiểm chứng chức năng online.
+
+### Chạy bản build tại máy
 
 ```powershell
 npm.cmd run build
@@ -187,11 +212,26 @@ Express phục vụ cả `dist/` và `/api`, mở cổng `PORT` (mặc định h
 
 Chọn môi trường Node 24 chạy process lâu dài, hỗ trợ tiến trình con và phản hồi HTTP streaming. Cài dependencies, build, cung cấp `GEMINI_API_KEY`, `GEMINI_MODEL`, `PORT` bằng secret/environment của máy chủ; chạy `npm start`. Dùng HTTPS; reverse proxy phải tắt response buffering/compression cho `/api/chat` và `/api/documents`, timeout ít nhất 110 giây. Backend đã gửi `X-Accel-Buffering: no` và `Cache-Control: no-transform`; vẫn cần kiểm tra cấu hình nền tảng thực tế.
 
-Không đưa API key vào quá trình build frontend. Không chỉ upload `dist/` lên static hosting rồi mong API hoạt động. Prototype nên chạy một instance vì kho RAM cục bộ; cần kho phiên dùng chung trước khi scale. Sau reverse proxy, cấu hình `trust proxy` theo số hop/IP proxy đã xác minh để rate limit nhận đúng IP, không bật tin cậy mọi proxy một cách tùy tiện. Chưa có URL triển khai hoặc kết quả thử streaming trên hosting.
+Không đưa API key vào quá trình build frontend. Không chỉ upload `dist/` lên static hosting rồi mong API hoạt động. Prototype nên chạy một instance vì kho RAM cục bộ; cần kho phiên dùng chung trước khi scale. Sau reverse proxy, cấu hình `trust proxy` theo số hop/IP proxy đã xác minh để rate limit nhận đúng IP, không bật tin cậy mọi proxy một cách tùy tiện. Đã có Live URL Render; streaming qua hosting vẫn chưa kiểm chứng.
+
+### Checklist bản online trước khi nộp
+
+Tất cả mục dưới đây **chưa kiểm chứng trên hosting**. Chỉ đánh dấu sau khi tự thử và ghi kết quả; dùng tài liệu không nhạy cảm, dừng nếu gặp quota.
+
+- [ ] Mở Live URL từ cửa sổ riêng tư; chọn nhiều TXT/PDF có chữ, xác nhận sẵn sàng và thử tệp rỗng/sai định dạng.
+- [ ] Hỏi dữ kiện có trong tài liệu, hỏi tiếp dựa vào lịch sử và hỏi thông tin không có; đối chiếu đáp án Gemini thật.
+- [ ] Thấy nội dung xuất hiện trước khi hoàn tất; thử dừng và thử lại, không chỉ quan sát nhãn loading.
+- [ ] Xem lịch sử, reload cùng tab; kiểm tra cảnh báo khi tạo hội thoại mới và khi phiên hết hạn/server khởi động lại.
+- [ ] Sao chép ra văn bản dễ đọc; tạo lại gửi yêu cầu mới mà không tăng số câu hỏi; lỗi được báo rõ và không làm mất đáp án cũ.
+- [ ] Thử trên điện thoại và desktop: upload, cuộn câu trả lời dài, ô nhập/nút gửi; không tràn ngang hoặc bị bàn phím che.
+
+Video demo vẫn chưa quay. Sau kiểm tra online, quay video tối đa 5 phút theo `DEMO_SCRIPT.md` và bổ sung liên kết ở đầu README.
 
 ## AI hỗ trợ và nguồn kỹ thuật
 
 Codex hỗ trợ đọc yêu cầu, tổ chức component/hook/service, triển khai backend và frontend, tra cứu tài liệu, viết/chạy kiểm thử, sửa lỗi và soạn tài liệu. Người nộp cần tự đọc code, cấu hình key, thử model thật và giải thích được luồng dữ liệu. Nhật ký trung thực ở `AI_WORKLOG.md`.
+
+Theo xác nhận của người thực hiện, ChatGPT hỗ trợ giải thích yêu cầu, soạn prompt, tạo tài liệu mẫu để thử, hướng dẫn GitHub/Render và rà soát tài liệu nộp. Người thực hiện tự đưa code lên GitHub và deploy; Gemini API là dịch vụ AI được tích hợp để trả lời trong sản phẩm.
 
 - [Gemini Structured Outputs](https://ai.google.dev/gemini-api/docs/structured-output): JSON Schema và streaming.
 - [Gemini 3.5 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite) và [giá Free Tier](https://ai.google.dev/gemini-api/docs/pricing#gemini-3.5-flash-lite): model cấu hình hiện tại, Standard text input/output có Free Tier; quyền và quota thực tế phụ thuộc project.
@@ -201,4 +241,4 @@ Codex hỗ trợ đọc yêu cầu, tổ chức component/hook/service, triển 
 - [Streamparser JSON](https://github.com/juanjoDiaz/streamparser-json): parser tăng dần.
 - [pdf-parse](https://github.com/mehmet-kozan/pdf-parse): API `PDFParse`, `getInfo`, `getText`, `destroy` và lỗi mật khẩu.
 
-Không push Git hoặc deploy trong lần triển khai này.
+Lần cập nhật tài liệu này không gọi API, commit, push hoặc deploy; thông tin triển khai trên được ghi theo xác nhận của người thực hiện.

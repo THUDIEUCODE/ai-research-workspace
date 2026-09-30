@@ -1,5 +1,41 @@
 # Nhật ký hỗ trợ AI
 
+## 30/09/2026 — GitHub và triển khai Render
+
+Thông tin triển khai dưới đây do người thực hiện xác nhận; không phải kết quả Codex tự truy cập/kiểm thử hosting trong lần cập nhật tài liệu này.
+
+- Người thực hiện **tự đưa code lên GitHub và deploy Render**, với hướng dẫn của ChatGPT.
+- GitHub: [THUDIEUCODE/ai-research-workspace](https://github.com/THUDIEUCODE/ai-research-workspace).
+- Live URL: [ai-research-workspace-a1yf.onrender.com](https://ai-research-workspace-a1yf.onrender.com).
+- Gói Render: **Free**. Build Command: `npm ci --include=dev && npm run build`. Start Command: `npm run start`.
+- Đã cấu hình `GEMINI_API_KEY` và `GEMINI_MODEL` bằng Environment Variables trên Render; không ghi giá trị vào nhật ký.
+- Log Render được xác nhận có “Build successful” và “Your service is live”. Đây chỉ là bằng chứng build/deploy, không chứng minh đầy đủ upload, Gemini, streaming, lịch sử, copy hoặc tạo lại trên hosting.
+- Chưa cung cấp bằng chứng kiểm thử đầy đủ bản online. Chưa quay video demo, chưa có link video; `DEMO_SCRIPT.md` chỉ là kịch bản.
+
+### Vai trò các công cụ
+
+- **Codex:** đọc/sửa code, hỗ trợ kiểm thử và tài liệu theo các giai đoạn đã ghi bên dưới. Trong nhiệm vụ hiện tại chỉ cập nhật README và nhật ký, không sửa ứng dụng, đọc `.env`, gọi API, commit, push hoặc deploy.
+- **ChatGPT:** theo xác nhận của người thực hiện, giải thích yêu cầu, hỗ trợ soạn prompt, tạo tài liệu mẫu để thử, hướng dẫn GitHub/Render và rà soát tài liệu nộp bài.
+- **Gemini API:** dịch vụ AI tích hợp trong sản phẩm để hỏi đáp dựa trên văn bản tài liệu; không phải công cụ được ghi nhận là viết code dự án.
+
+### Phạm vi kết quả và giới hạn hiện tại
+
+Các tests mock và những lượt Gemini thật đã ghi trong nhật ký/`REQUIREMENTS_AUDIT.md` chạy trên môi trường local; không chuyển thành kết quả đạt trên Render. Báo cáo audit phản ánh thời điểm kiểm tra trước xác nhận triển khai, nên nhận xét khi đó chưa tìm thấy Live URL/GitHub không phải trạng thái hiện tại. Checklist online mới nằm trong README và còn để chưa kiểm chứng.
+
+Giữ nguyên các giới hạn: lịch sử sessionStorage chỉ trong cùng tab, có thể mất khi đóng tab/xóa dữ liệu; tài liệu RAM mất khi server restart. Lỗi lịch sử vượt 80 tin nhắn bị bỏ im lặng khi reload đã được audit tái hiện bằng 82 tin nhắn, chưa có xác nhận sửa. Không xóa lỗi này để làm hồ sơ đẹp hơn.
+
+Các mục OpenAI, chưa có key, chưa có Git hoặc chưa deploy bên dưới là **lịch sử tại giai đoạn tương ứng**, không phải trạng thái ngày 30/09 sau triển khai. Các lỗi, giả thuyết sai và kết quả kiểm chứng cũ được giữ lại.
+
+### Nếu có thêm 7 ngày — kế hoạch cập nhật sau triển khai
+
+- Ngày 1: kiểm chứng Gemini thật trên Render với câu có đáp án, thiếu thông tin và hỏi tiếp; đối chiếu tài liệu, ghi rõ kết quả và giới hạn quota.
+- Ngày 2: kiểm tra streaming provider → backend → giao diện qua hosting, dừng/tạo lại, timeout và lỗi; không dùng mock hoặc log live thay bằng chứng online.
+- Ngày 3: thử PDF tiếng Việt, nhiều phông chữ/bố cục, PDF chữ kèm ảnh và file lỗi; xác nhận phần văn bản đọc được, không tuyên bố có OCR.
+- Ngày 4: sửa và kiểm tra lại lỗi lịch sử quá giới hạn; kiểm tra sessionStorage, hết phiên và mất tài liệu khi server restart.
+- Ngày 5: thử mobile thật, bàn phím ảo, IME, clipboard và accessibility; cải thiện vấn đề quan sát được.
+- Ngày 6: nếu luồng bắt buộc đã ổn định, bổ sung trích dẫn trang/đoạn có thể đối chiếu; không để model tự bịa nguồn.
+- Ngày 7: chạy kiểm tra hồi quy, cập nhật kết quả online, quay video tối đa 5 phút và rà soát liên kết/source nộp bài.
+
 ## Điều chỉnh câu trả lời theo câu hỏi — 29/09/2026
 
 - Sửa system prompt: summary trả lời trực tiếp; câu hỏi đơn giản ưu tiên câu ngắn, các mảng rỗng; chỉ thêm ý chính/rủi ro/hành động có liên quan và cơ sở, không lặp thông tin hoặc điền cho đủ schema. Có hướng dẫn riêng cho tóm tắt, rủi ro và câu hỏi thiếu đáp án.
@@ -19,7 +55,7 @@
 
 ## Bước 3 — Chuyển sang Gemini Developer API Free Tier (28/09/2026)
 
-Đây là trạng thái hiện tại; các bước bên dưới được giữ nguyên như lịch sử, không mô tả provider đang chạy.
+Ghi chép tại thời điểm chuyển provider ngày 28/09/2026; trạng thái key và kiểm chứng khi đó không đại diện cho các mốc 29–30/09 bên trên.
 
 ### Yêu cầu và phần AI hỗ trợ
 
@@ -85,6 +121,8 @@ Ngày thực hiện theo môi trường: 28/09/2026.
 
 ## Bước 2 — Backend, tài liệu thật và luồng OpenAI streaming
 
+Giai đoạn 28/09/2026, trước khi chuyển sang Gemini. Các nhận xét chưa có key/Git/deploy và kế hoạch ở mục này được giữ làm lịch sử; xem mốc 30/09 ở đầu file để biết trạng thái hiện tại.
+
 ### Yêu cầu và công cụ thực sự đã dùng
 
 - Người dùng yêu cầu tiếp tục code hiện có cho “7-Day AI Builder Challenge for Frontend Developer”: upload/đọc PDF–TXT, OpenAI streaming thật, structured output, phiên riêng, giới hạn, dừng/tạo lại, kiểm chứng và tài liệu nộp bài. AI đọc toàn bộ yêu cầu trong tệp đính kèm, code, package.json, README, nhật ký và tìm hướng dẫn trước khi sửa. Không tạo lại dự án.
@@ -130,7 +168,9 @@ Ngày thực hiện theo môi trường: 28/09/2026.
 - Chưa kiểm thử UI trên Safari/Firefox, điện thoại thật, IME thật hoặc trình đọc màn hình. Clipboard lỗi được mô phỏng bằng hàm ném lỗi.
 - Không OCR, trích dẫn nguồn, database, đăng nhập; phiên RAM mất khi restart. Chưa deploy và chưa thử proxy/hosting production. Test PDF không có chữ dùng PDF trống tạo cục bộ, chưa đánh giá một bộ sưu tập PDF scan nhiều kiểu hoặc PDF bảng phức tạp.
 
-### Nếu có thêm 7 ngày
+### Kế hoạch 7 ngày ban đầu — lịch sử giai đoạn OpenAI
+
+Kế hoạch cũ được giữ để đối chiếu; kế hoạch hiện tại nằm ở mục triển khai ngày 30/09 phía trên.
 
 - Ngày 1–2: kiểm chứng OpenAI thật bằng bộ câu hỏi có đáp án đối chiếu, thiếu thông tin, hỏi tiếp và tài liệu có prompt injection; ghi kết quả thay vì giả định.
 - Ngày 3: thử nhiều PDF tiếng Việt/bảng/phông chữ, kiểm tra chất lượng trích xuất và cân nhắc OCR có thông báo rõ.
